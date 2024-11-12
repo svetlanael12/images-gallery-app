@@ -1,0 +1,36 @@
+:root {
+    --pink: #d7b8fc;
+    --pink-opacity: #d7b8fc91;
+    --purple: #6100ee;
+    --dark-purple: #310a6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.6rem;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    transition: all 1s ease 0s;
+
+    background-color: var(--pink-opacity);
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--purple);
+}
+
+h3 {
+    color: var(--dark-purple);
+}
+
+p {
+    color: var(--dark-purple);
+}

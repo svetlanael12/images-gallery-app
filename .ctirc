@@ -1,0 +1,8 @@
+{
+  excludes: [
+    '@types',
+    'typings',
+    'node_modules',
+  ],
+  fileExcludePatterns: ['.test'],
+}

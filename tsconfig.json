@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "types": [],
+        "allowJs": false,
+        "skipLibCheck": false,
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "@assets/*": ["src/assets/*"],
+            "@components/*": ["src/components/*"],
+            "@context/*": ["src/context/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@models/*": ["src/models/*"],
+            "@pages/*": ["src/pages/*"],
+            "@routers/*": ["src/routers/*"],
+            "@shared/*": ["src/shared/*"],
+            "@stores/*": ["src/stores/*"],
+            "@utils/*": ["src/utils/*"]
+        }
+    },
+    "include": ["src", "src/react-app-env.d.ts"]
+}
