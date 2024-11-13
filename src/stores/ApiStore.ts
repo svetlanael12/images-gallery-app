@@ -14,14 +14,13 @@ export const apiStoreObservables = {
  */
 export class ApiStore {
     apiConfigs: ApiConfigs;
-    /** Инстанс аксиоса */
+    /** Инстанс Axios для выполнения HTTP-запросов. */
     client: AxiosInstance;
 
     constructor(rootStore: RootStore) {
         this.apiConfigs = new ApiConfigs();
         this.client = axios.create({
             baseURL: rootStore.env.VITE_API_URL,
-            // withCredentials: true,
             headers: { Authorization: `Client-ID ${rootStore.env.VITE_ACCESS_KEY}` },
         });
 

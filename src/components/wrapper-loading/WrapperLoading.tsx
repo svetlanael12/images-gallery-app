@@ -5,10 +5,22 @@ import { Loader } from '@components/loader/Loader';
 import { LoadingModel } from '@models/LoadingModel';
 
 export type WrapperLoadingProps = {
+    /**
+     * Функция для загрузки данных, которая возвращает Promise.
+     */
     load: () => Promise<void>;
+    /**
+     * Дочерние элементы, которые отобразятся в случае успеха
+     */
     children?: React.ReactNode;
 };
 
+/**
+ * Компонент, отображающий индикатор загрузки во время выполнения асинхронной операции.
+ * В случае успеха возвращает дочерние элементы, в случае с ошибкой - сообщение об ошибке загрузки 
+  
+ * @see {WrapperLoadingProps}
+ */
 export const WrapperLoading = observer((props: WrapperLoadingProps): JSX.Element => {
     const { load, children } = props;
 

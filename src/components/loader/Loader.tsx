@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
-import { observer } from 'mobx-react-lite';
 
+/**
+ * Стилизованный лоадер
+ */
 export const Loader = styled.div`
     height: 2px;
     width: 100%;

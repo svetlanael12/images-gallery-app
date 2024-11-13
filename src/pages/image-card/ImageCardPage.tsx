@@ -11,9 +11,13 @@ import { ClientRouters } from '@routers/clientRouters';
 
 import { ImageCard } from './card/ImageCard';
 
+/**
+ * Страница просмотра полного изображения
+ */
 export const ImageCardPage = observer((): JSX.Element => {
     const navigate = useNavigate();
-    const [isOpenModal, onOpenModal, onCloseModal] = useFlag(true);
+    // по умолчанию при переходе на роут модалка должна открыта
+    const [isOpenModal, , onCloseModal] = useFlag(true);
     const rootStore = useRootStore();
 
     const imageViewModel = useMemo(() => {

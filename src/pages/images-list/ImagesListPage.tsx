@@ -3,7 +3,10 @@ import React from 'react';
 import { ImagesListPageGrid } from './list/ImagesListPageGrid';
 import { Outlet } from 'react-router-dom';
 
-export const ImagesListPage = observer(() => {
+/**
+ * Главная страница (таблица изображений)
+ */
+export const ImagesListPage = observer((): JSX.Element => {
     return (
         <div>
             <h1>Галерея изображений</h1>

@@ -22,7 +22,10 @@ const Image = styled.img`
     object-position: center;
 `;
 
-export const ImageCardWrapperByImage = observer(() => {
+/**
+ * Компонент отображает картинку в модалке
+ */
+export const ImageCardWrapperByImage = observer((): JSX.Element => {
     const { image } = useImageViewContext();
 
     return (

@@ -14,9 +14,15 @@ export const imagesStoreObservables = {
     setImages: action.bound,
 };
 
+/**
+ * Основной стор для хранения и загрузки изображений
+ */
 export class ImagesStore {
     protected api: ApiStore;
 
+    /**
+     * Массив изображений для главной страницы
+     */
     images?: ImagesDTO[];
 
     constructor(rootStore: RootStore) {
@@ -24,6 +30,9 @@ export class ImagesStore {
         makeObservable(this, imagesStoreObservables);
     }
 
+    /**
+     * Загружает список изображений и сеттит их в хранилище.
+     */
     async loadImages(): Promise<void> {
         const load = this.api.apiConfigs.getListPhotos();
         return this.api
@@ -32,6 +41,11 @@ export class ImagesStore {
             .then(this.setImages);
     }
 
+    /**
+     * Получает изображение по его идентификатору.
+     * @param {string} id - Идентификатор изображения, которое нужно загрузить.
+     * @returns {Promise<ImageDTO>} объект с параметрами загруженного изображения
+     */
     async loadImageById(id: string): Promise<ImageDTO> {
         const load = this.api.apiConfigs.getPhoto(id);
         return this.api.client(load).then((response) => response.data);

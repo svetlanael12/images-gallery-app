@@ -1,12 +1,14 @@
 import { WrapperLoading } from '@components/wrapper-loading/WrapperLoading';
-import styled from '@emotion/styled';
 import { useRootStore } from '@hooks/context/useRootStore';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { StyledComponentGrid, StyledComponentWrapperForImage } from './styled-components/StyledComponentsImageList';
 import { ImagesListPageImageCard } from './image-card/ImagesListPageImageCard';
 
-export const ImagesListPageGrid = observer(() => {
+/**
+ * Компонент сетки картинок на главной странице
+ */
+export const ImagesListPageGrid = observer((): JSX.Element => {
     const { loadImages, images } = useRootStore().imagesStore;
 
     const list = images ? (

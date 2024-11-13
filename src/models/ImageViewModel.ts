@@ -13,9 +13,15 @@ export const imageViewModelObservables = {
     setImage: action.bound,
 };
 
+/**
+ * Модель для управления загруженным по идентификатору изображением
+ */
 export class ImageViewModel {
     protected imagesStore: ImagesStore;
 
+    /**
+     * Загруженное изображение
+     */
     image?: ImageDTO;
 
     constructor(rootStore: RootStore) {
@@ -24,6 +30,10 @@ export class ImageViewModel {
         makeObservable(this, imageViewModelObservables);
     }
 
+    /**
+     *  Загружает изображение по его идентификатору и устанавливает его в состояние.
+     * @param {string} id - Идентификатор изображения, которое необходимо загрузить.
+     */
     async loadImageById(id: string): Promise<void> {
         return this.imagesStore.loadImageById(id).then(this.setImage);
     }

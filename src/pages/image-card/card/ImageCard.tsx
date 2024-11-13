@@ -8,10 +8,15 @@ import { useImageViewContext } from '@hooks/context/useImageViewContext';
 import { ImageCardWrapperByImage } from './image/ImageCardWrapperByImage';
 import { ImageCardWrapperByInfo } from './info/ImageCardWrapperByInfo';
 
-export const ImageCard = observer(() => {
+/**
+ * Компонент, загружающий изображение по идентификатору и отображающий инфу о нем
+ */
+export const ImageCard = observer((): JSX.Element => {
     const { id } = useParams();
-    const { loadImageById, image } = useImageViewContext();
+    const { loadImageById } = useImageViewContext();
 
+    // если отсутствует идентификатор, то возвращаем пустой фрагмет
+    // (не null, чтобы не нарушать типизацию компонента)
     if (!id) {
         return <React.Fragment />;
     }

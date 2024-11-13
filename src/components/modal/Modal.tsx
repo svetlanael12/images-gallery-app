@@ -3,6 +3,9 @@ import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
+/**
+ * Блок за модалкой, перекрывающий доступ к остальным элементам страницы
+ */
 const Overlay = styled.div`
     position: fixed;
     top: 0;
@@ -22,6 +25,9 @@ const Overlay = styled.div`
     }
 `;
 
+/**
+ * Сам контейнер, содержащий в себе контент модалки
+ */
 const ModalContainer = styled.div`
     background-color: var(--pink);
     border-radius: 8px;
@@ -32,6 +38,9 @@ const ModalContainer = styled.div`
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 `;
 
+/**
+ * Кнопка закрытия
+ */
 const CloseButton = styled.button`
     width: 30px;
     height: 30px;
@@ -49,11 +58,24 @@ const CloseButton = styled.button`
 `;
 
 export type ModalProps = {
+    /**
+     * Флаг, обозначающий открыта или закрыта модалка
+     */
     isOpen: boolean;
+    /**
+     * Ф-я, которая будет вызвана при закрытии модалки
+     */
     onClose: VoidFunction;
+    /**
+     * Дочерние элементы
+     */
     children: React.ReactNode;
 };
 
+/**
+ * Компонент модального окна (управляется извне)
+ * @see ModalProps
+ */
 export const Modal = observer((props: ModalProps): JSX.Element => {
     const { isOpen, onClose, children } = props;
     if (!isOpen) {
@@ -69,18 +91,20 @@ export const Modal = observer((props: ModalProps): JSX.Element => {
 
         // Очистка эффекта при размонтировании компонента
         return () => {
-            document.body.style.overflow = 'unset'; // Включаем прокрутку обратно
+            document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
 
+    // Ф-я обечпечивает закрытие модального окна при клике вне модалки
     const handleOverlayClick = () => {
-        onClose(); // Закрытие модального окна при клике вне модалки
+        onClose();
     };
 
     const handleModalClick = (event: React.MouseEvent) => {
         event.stopPropagation();
     };
 
+    // используем createPortal, чтобы не рендерить модалку внутри ДОМа
     return createPortal(
         <Overlay onClick={handleOverlayClick}>
             <ModalContainer onClick={handleModalClick}>

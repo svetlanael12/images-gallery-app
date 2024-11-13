@@ -5,11 +5,18 @@ import { ImagesDTO } from '@shared/types/images';
 import { ClientRouters } from '@routers/clientRouters';
 import { useGenerateLinkWithParams } from '@hooks/useGenerateLinkWithParams';
 
+/**
+ * @param {ImagesDTO} image - параметры изображения
+ */
 export type ImagesListPageImageCardProps = {
     image: ImagesDTO;
 };
 
-export const ImagesListPageImageCard = observer((props: ImagesListPageImageCardProps) => {
+/**
+ * Компонент карточки в сетке с изображением и другой информацией
+ * @see ImagesListPageImageCardProps
+ */
+export const ImagesListPageImageCard = observer((props: ImagesListPageImageCardProps): JSX.Element => {
     const { image } = props;
     const urlCard = useGenerateLinkWithParams(ClientRouters.imageCard, { id: image.id });
 

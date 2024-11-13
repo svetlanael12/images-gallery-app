@@ -1,10 +1,11 @@
-import { action, makeObservable, observable } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 import { ApiStore } from './ApiStore';
 import { ImagesStore } from './ImagesStore';
 
 export const rootStoreObservables = {
     api: observable,
     env: observable,
+    imagesStore: observable,
 };
 
 /**
@@ -12,11 +13,13 @@ export const rootStoreObservables = {
  */
 export class RootStore {
     api: ApiStore;
+    /**
+     * Переменные окружения, нужные для работы приложения
+     */
     env: ImportMetaEnv;
     imagesStore: ImagesStore;
 
     constructor(env: ImportMetaEnv) {
-        console.log(env);
         this.env = env;
         this.api = new ApiStore(this);
         this.imagesStore = new ImagesStore(this);

@@ -20,7 +20,11 @@ const Tags = styled.div`
     flex-wrap: wrap;
 `;
 
-export const ImageCardWrapperByInfo = observer(() => {
+/**
+ * Компонент, отображающий информацию об изображении
+ * (текст под картинкой)
+ */
+export const ImageCardWrapperByInfo = observer((): JSX.Element => {
     const { image } = useImageViewContext();
 
     const tags = image?.tags.map((tag) => <Tag>{tag.title}</Tag>);
