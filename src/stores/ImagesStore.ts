@@ -23,7 +23,7 @@ export class ImagesStore {
     /**
      * Массив изображений для главной страницы
      */
-    images?: ImagesDTO[];
+    images?: ImagesDTO[] = [];
 
     constructor(rootStore: RootStore) {
         this.api = rootStore.api;
@@ -38,7 +38,11 @@ export class ImagesStore {
         return this.api
             .client(load)
             .then((response) => response.data)
-            .then(this.setImages);
+            .then((data) => {
+                if (Array.isArray(data)) {
+                    this.setImages(data);
+                }
+            });
     }
 
     /**

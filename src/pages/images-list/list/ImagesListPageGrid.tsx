@@ -11,15 +11,16 @@ import { ImagesListPageImageCard } from './image-card/ImagesListPageImageCard';
 export const ImagesListPageGrid = observer((): JSX.Element => {
     const { loadImages, images } = useRootStore().imagesStore;
 
-    const list = images ? (
-        images.map((image, index) => (
-            <StyledComponentWrapperForImage key={index}>
-                <ImagesListPageImageCard image={image} />
-            </StyledComponentWrapperForImage>
-        ))
-    ) : (
-        <React.Fragment>Изображений по запросу не нашлось</React.Fragment>
-    );
+    const list =
+        images && images.length ? (
+            images.map((image, index) => (
+                <StyledComponentWrapperForImage key={index}>
+                    <ImagesListPageImageCard image={image} />
+                </StyledComponentWrapperForImage>
+            ))
+        ) : (
+            <React.Fragment>Изображений по запросу не нашлось</React.Fragment>
+        );
 
     return (
         <React.Fragment>
